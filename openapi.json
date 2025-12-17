@@ -1,0 +1,23 @@
+﻿
+
+StatusCode        : 200
+StatusDescription : OK
+Content           : {"openapi":"3.1.0","info":{"title":"Artifact Server","version":"0.1.0"},"paths":{"/":{"get":{"summary":"Index","description":"ÐÑÐ¾ÑÑÐ¾Ð¹ HTML-Ð¸Ð½Ð´ÐµÐºÑ: ÑÐ¿Ð¸ÑÐ¾Ðº job_id Ð
+                    ¸ ÑÑÑÐ»ÐºÐ¸ Ð½Ð°...
+RawContent        : HTTP/1.1 200 OK
+                    Content-Length: 1430
+                    Content-Type: application/json
+                    Date: Wed, 17 Dec 2025 12:47:18 GMT
+                    Server: uvicorn
+                    
+                    {"openapi":"3.1.0","info":{"title":"Artifact Server","version":"0.1.0"},"...
+Forms             : 
+Headers           : {[Content-Length, 1430], [Content-Type, application/json], [Date, Wed, 17 Dec 2025 12:47:18 GMT], [Server, uvicorn]}
+Images            : {}
+InputFields       : {}
+Links             : {}
+ParsedHtml        : 
+RawContentLength  : 1430
+
+
+

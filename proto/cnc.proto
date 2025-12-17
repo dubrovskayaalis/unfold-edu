@@ -1,0 +1,47 @@
+syntax = "proto3";
+package cnc;
+
+message Dimension {
+  string name = 1;
+  double value = 2;
+}
+
+message Photo {
+  string filename = 1;
+  bytes data = 2;
+  string view = 3;
+}
+
+message UploadPhotosRequest {
+  string project_id = 1;
+  repeated Photo photos = 2;
+  repeated Dimension dimensions = 3;
+}
+
+message UploadPhotosResponse {
+  string job_id = 1;
+  string status = 2;
+}
+
+message ArtifactRef {
+  string type = 1;
+  string url = 2;
+}
+
+message GetArtifactsRequest {
+  string job_id = 1;
+}
+
+message GetArtifactsResponse {
+  repeated ArtifactRef artifacts = 1;
+}
+
+message ModelChunk {
+  bytes data = 1;
+}
+
+service Gateway {
+  rpc UploadPhotos(UploadPhotosRequest) returns (UploadPhotosResponse);
+  rpc GetArtifacts(GetArtifactsRequest) returns (GetArtifactsResponse);
+  rpc ModelToUnfold(stream ModelChunk) returns (UploadPhotosResponse);
+}

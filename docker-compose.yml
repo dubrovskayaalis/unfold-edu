@@ -1,0 +1,35 @@
+version: "3.8"
+
+services:
+  artifact-server:
+    build:
+      context: .
+      dockerfile: deploy/Dockerfile
+    container_name: artifact-server
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./services/storage/artifacts:/app/services/storage/artifacts
+    environment:
+      - HOST=0.0.0.0
+      - PORT=8080
+
+  gateway:
+    build:
+      context: .
+      dockerfile: gateway/Dockerfile
+    container_name: unfold-gateway
+    restart: unless-stopped
+    depends_on:
+      - artifact-server
+    ports:
+      - "50051:50051"
+    environment:
+      - ARTIFACT_PUBLIC_BASE=http://artifact-server:8080/artifacts
+    volumes:
+      - ./services/storage/artifacts:/app/services/storage/artifacts
+      - ./proto:/app/proto
+    # Если нужно дебажить, можно подключить tty и stdin_open
+    # tty: true
+    # stdin_open: true
